@@ -1,13 +1,13 @@
 -module(fserlangutils_json).
 
--export([encode/1, decode/1]).
+-export([to/1, from/1]).
 -export([to_json_structure/1, tuple_to_json_structure/1, proplist_to_json_structure/1]).
 
 %%%%%%%%%%%%%%%%%%%%
 % API
 %%%%%%%%%%%%%%%%%%%%
--spec decode(Input::string()) -> term().
-decode(Input) ->
+-spec from(Input::string()) -> term().
+from(Input) ->
   try jiffy:decode(Input) of
     Value -> Value
     catch
@@ -16,8 +16,8 @@ decode(Input) ->
     end.
 
 
--spec encode(Input::term()) -> string().
-encode(Value) ->
+-spec to(Input::term()) -> string().
+to(Value) ->
   jiffy:encode(Value).
 
 
