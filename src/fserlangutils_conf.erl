@@ -5,7 +5,7 @@
 -spec read(Filepath :: string()) -> term().
 read(Filepath) ->
   {ok, [Config]} = file:consult(
-    filename:join([filename:absname(""), Filepath])
+    fserlangutils_filename:relative_path(Filepath)
   ),
   {ok, Config}.
 
