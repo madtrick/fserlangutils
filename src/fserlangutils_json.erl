@@ -31,6 +31,8 @@ to_json_structure(Data) when is_tuple(Data)->
 to_json_structure(Data) ->
   Data.
 
+tuple_to_json_structure({}) ->
+  {[]};
 tuple_to_json_structure({Field, Value}) ->
   {[{Field, to_json_structure(Value)}]}.
 
