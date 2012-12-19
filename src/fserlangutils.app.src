@@ -1,6 +1,6 @@
 {application, fserlangutils,
  [
-  {description, ""},
+  {description, "A collection of utility modules"},
   {vsn, "1"},
   {registered, []},
   {applications, [
