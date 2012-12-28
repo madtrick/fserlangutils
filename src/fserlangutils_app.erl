@@ -1,5 +1,5 @@
 -module(fserlangutils_app).
--export([ensure_started/1, execution_mode/1]).
+-export([ensure_started/1, execution_mode/1, read_in_priv/2, read_in_dir/3]).
 
 %%
 %% Ensures that an application is started
@@ -37,3 +37,26 @@ execution_mode(Application) ->
          AtomExecMode
      end
  end.
+
+%%
+%% Returns the contents of a file that's stored in the priv/ dir of an application
+%%
+-spec read_in_priv(Application :: atom() ,Filepath :: string()) -> term().
+read_in_priv(Application, Filepath) ->
+  read_in_dir(Application, priv, Filepath).
+
+
+%%
+%% Returns the contents of a file that's stored inside a subdir of an application
+%%
+-spec read_in_dir(Application :: atom(), Dir :: atom(), Filepath :: string()) -> term().
+read_in_dir(Application, Dir, Filepath) ->
+  case code:lib_dir(Application, Dir) of 
+    {error, bad_name} ->
+      RelativePath = fserlangutils_filename:relative_path(filename:join([Dir, Filepath])),
+      fserlangutils_conf:read2(RelativePath);
+    Path ->
+      fserlangutils_conf:read2(filename:join([Path, Filepath]))
+  end.
+
+

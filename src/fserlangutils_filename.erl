@@ -5,4 +5,5 @@
 % Pass a path relative to application root
 % Returns: a full path
 relative_path(Path) ->
-    filename:join([filename:absname(""), Path]).
+    {ok, Cwd} = file:get_cwd(),
+    filename:join([Cwd, Path]).
