@@ -7,7 +7,7 @@
                   (Data:: binary())-> binary().
 ensure_binary(Data) when is_binary(Data) -> Data;
 ensure_binary(Data) when is_list(Data) -> list_to_binary(Data);
-ensure_binary(Data) when is_atom(Data) -> atom_to_binary(Data).
+ensure_binary(Data) when is_atom(Data) -> atom_to_binary(Data, utf8).
 
 -spec ensure_list(Data :: list()) -> list();
                   (Data :: atom()) -> list();
