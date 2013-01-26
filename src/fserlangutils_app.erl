@@ -27,7 +27,7 @@ execution_mode(Application) ->
  case application:get_env(Application, execution_mode) of
    {ok, ExecMode} ->  ExecMode;
    undefined ->
-     EnvVariableName = string:concat(erlang:to_upper(Application), "_ENV"),
+     EnvVariableName = string:concat(string:to_upper(fserlangutils_string:ensure_list(Application)), "_ENV"),
      case os:getenv(EnvVariableName) of
        false ->
          undefined;
