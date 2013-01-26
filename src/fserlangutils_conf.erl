@@ -5,7 +5,7 @@
 % DEPRECATED
 -spec read(Filepath :: string()) -> term().
 read(Filepath) ->
-  io:format("fserlangutils_conf:read/1 is deprecated please update"),
+  io:format("fserlangutils_conf:read/1 is deprecated please update ~n"),
   {ok, [Config]} = file:consult(
     fserlangutils_filename:relative_path(Filepath)
   ),
@@ -18,7 +18,7 @@ read2(Filepath) ->
 % DEPRECATED
 -spec read(Filepath :: string(), ExecutionMode :: atom()) -> term().
 read(FilePath, ExecutionMode) ->
-  io:format("fserlangutils_conf:read/2 is deprecated please update"),
+  io:format("fserlangutils_conf:read/2 is deprecated please update ~n"),
   {ok, Conf} = read(FilePath),
   {ok, proplists:get_value(ExecutionMode, Conf)}.
 
