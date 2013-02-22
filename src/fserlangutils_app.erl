@@ -32,7 +32,7 @@ execution_mode(Application) ->
        false ->
          undefined;
        ExecMode ->
-         list_to_atom(ExecMode),
+         list_to_atom(ExecMode)
      end
  end.
 
