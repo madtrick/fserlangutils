@@ -32,9 +32,7 @@ execution_mode(Application) ->
        false ->
          undefined;
        ExecMode ->
-         AtomExecMode = list_to_atom(ExecMode),
-         application:set_env(qrauth, execution_mode, AtomExecMode),
-         AtomExecMode
+         list_to_atom(ExecMode),
      end
  end.
 
