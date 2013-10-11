@@ -6,7 +6,7 @@ seconds_since_epoch() ->
   {Megasecs, Secs, _Microsecs} = erlang:now(),
   megaseconds_to_seconds(Megasecs) + Secs.
 
-hmicroseconds_since_epoch() ->
+microseconds_since_epoch() ->
   {Megasecs, Secs, Microsecs}  = erlang:now(),
   megaseconds_to_seconds(Megasecs) + seconds_to_microseconds(Secs) + Microsecs.
 
